@@ -5,12 +5,10 @@
   "main": "./src/index.ts",
   "license": "MIT",
   "homepage": "https://be-spectacular.app",
-  "private": false,
   "engines": {
     "node": "16",
     "yarn": "^1.22"
   },
-
   "author": {
     "name": "Andrew Oxenburgh",
     "email": "andrew.oxenburgh@gmail.com",
