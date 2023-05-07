@@ -15,13 +15,19 @@
     "url": "https://be-spectacular.app"
   },
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "clean": "rm -rf ./node_modules && yarn",
+      "demo": "node ./src/index.ts -f ../test-files/text.txt"
   },
   "devDependencies": {
     "ava": "^5.2.0"
   },
   "dependencies": {
     "chalk": "4.1.2",
-    "keypress": "^0.2.1"
+    "commander": "^10.0.1",
+    "js-yaml": "^4.1.0",
+    "keypress": "^0.2.1",
+    "ramda": "^0.29.0",
+    "typescript": "^5.0.4"
   }
 }

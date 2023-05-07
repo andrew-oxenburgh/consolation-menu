@@ -18,7 +18,10 @@ test('array of objects > associative array', t => {
         }
     ]
     t.deepEqual({
-        'k': 'keep',
+        k: {
+            key: 'k',
+            command: 'keep'
+        }
     }, manipulateInput(items))
 })
 

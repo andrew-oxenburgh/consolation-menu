@@ -1,0 +1,7 @@
+ls
+ls -al
+ls -a
+ls -l
+pwd
+echo hello
+echo "goodbye"
