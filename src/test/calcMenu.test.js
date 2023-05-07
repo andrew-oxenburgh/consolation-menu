@@ -18,7 +18,6 @@ test('first with empty calcMenu', t => {
 })
 test('single calcMenu item', t => {
     const actual = showMenu({'z': 'ls -al'})
-    console.log(JSON.stringify(actual, null, 3))
     const expected = line('z', 'ls -al')
     t.is(actual, expected)
 })

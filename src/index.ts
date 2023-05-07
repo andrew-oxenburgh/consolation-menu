@@ -1,3 +1,5 @@
+import { CommandLine } from "./commandLine.js"
+
 const consolationMenu = require('./consolationMenu')
 const exec = require('child_process').exec
 const chalk = require('chalk')
@@ -15,6 +17,8 @@ function runCommand(res) {
     })
 }
 
+// console.log(JSON.stringify(types, null, 3))
+
 // @ts-ignore
 async function show(menu) {
     const res = await consolationMenu(menu)
@@ -26,7 +30,7 @@ async function show(menu) {
     }
 }
 
-function removeEmptyLines(input) {
+function removeEmptyLines(input: string[]): string[] {
     return input.reduce((acc, val) => {
         if (val.length) {
             acc.push(val)
@@ -35,12 +39,12 @@ function removeEmptyLines(input) {
     }, []);
 }
 
-async function getConfig(opts) {
+async function getConfig(opts: {file: string}): Promise<CommandLine[]> {
     const filepath = path.resolve(__dirname, opts.file);
-    let input = await fs.promises.readFile(filepath)
-    let finalInput = []
+    let finalInput: [] = []
 
     if(opts.file.endsWith('.txt')){
+        let input: string[] = await fs.promises.readFile(filepath)
         input = input.toString().split('\n')
         input = removeEmptyLines(input)
         finalInput = R.map((val)=>{
@@ -52,8 +56,7 @@ async function getConfig(opts) {
         }, input)
     }
     else if(opts.file.endsWith('.yml')||opts.file.endsWith('.yaml')){
-        input = input.toString().split('\n')
-        input = yaml.load(input, {});
+        finalInput = yaml.load(fs.readFileSync(filepath, 'utf8'));
         finalInput = R.map((val)=>{
             return {
                 command: '',
@@ -61,12 +64,12 @@ async function getConfig(opts) {
                 description: '',
                 ...val
             }
-        }, input)
+        }, finalInput)
     }
     return finalInput
 }
 
-async function run(program) {
+async function run(program: { name: Function, parse: Function, opts: Function }) {
     program.name('console menu')
         .description('cli to show a list of possible commands')
         .version('0.0.1')

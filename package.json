@@ -5,6 +5,7 @@
   "main": "./src/index.ts",
   "license": "MIT",
   "homepage": "https://be-spectacular.app",
+    "type": "commonjs",
   "engines": {
     "node": "16",
     "yarn": "^1.22"
@@ -17,12 +18,14 @@
   "scripts": {
     "test": "ava",
     "clean": "rm -rf ./node_modules && yarn",
-      "demo": "node ./src/index.ts -f ../test-files/text.txt"
+    "demo-txt": "tsc --module commonjs && node ./src/index.js -f ../test-files/text.txt",
+    "demo-yml": "tsc --module commonjs && node ./src/index.js -f ../test-files/config.yml"
   },
   "devDependencies": {
     "ava": "^5.2.0"
   },
   "dependencies": {
+    "@types/node": "^20.1.0",
     "chalk": "4.1.2",
     "commander": "^10.0.1",
     "js-yaml": "^4.1.0",

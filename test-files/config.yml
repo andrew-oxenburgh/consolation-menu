@@ -1,6 +1,4 @@
 ---
 commands:
-    - huey
-    - dewey
-    - louie
-    - fred
+    - command: huey
+      key: z
