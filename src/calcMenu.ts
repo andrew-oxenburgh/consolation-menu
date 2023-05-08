@@ -7,7 +7,11 @@ module.exports = function calcMenu(items: CommandLine[]) {
         return 'welcome to consolation-calcMenu'
     }
     const res: string[] = R.reduce((acc: string[], item: CommandLine) => {
-        acc.push(chalk.red(`[${item.key}]`) + '   ' + item.command)
+        let line = chalk.red(`[${item.key}]`) + '    ' + item.command;
+        if(item.description){
+            line += `\n    ${chalk.blue(item.description)}`
+        }
+        acc.push(line)
         return acc
     }, [], items);
     return res.join('\n')

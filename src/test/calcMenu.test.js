@@ -1,41 +1,49 @@
-const test = require('ava')
-
-const showMenu = require("../calcMenu")
-
-function line(shortcut, command) {
-    return `\u001b[31m[${shortcut}]\u001b[39m   ${command}`;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var test = require('ava');
+var showMenu = require("../calcMenu");
+function line(cmd) {
+    if (cmd.description && cmd.description.length > 0) {
+        return "\u001B[31m[".concat(cmd.key, "]\u001B[39m    ").concat(cmd.command, "\n    \u001B[34m").concat(cmd.description, "\u001B[39m");
+    }
+    else {
+        return "\u001B[31m[".concat(cmd.key, "]\u001B[39m    ").concat(cmd.command);
+    }
 }
-
-test('first with no calcMenu', t => {
-    const actual = showMenu([])
-    const expected = "welcome to consolation-calcMenu"
-    t.is(actual, expected)
-})
-test('single calcMenu item', t => {
-    const actual = showMenu([{
+test('first with no calcMenu', function (t) {
+    var actual = showMenu([]);
+    var expected = "welcome to consolation-calcMenu";
+    t.is(actual, expected);
+});
+test('single calcMenu item', function (t) {
+    var cmd = {
         key: 'z',
         command: 'ls -al'
-    }])
-    const expected = line('z', 'ls -al')
-    t.is(actual, expected)
-})
-test('single calcMenu item 2', t => {
-    const actual = showMenu([{
+    };
+    var actual = showMenu([cmd]);
+    var expected = line(cmd);
+    t.is(actual, expected);
+});
+test('single item with description', function (t) {
+    var cmd = {
         key: '0',
-        command: 'pwd'
-    }])
-    const expected = line('0', 'pwd')
-    t.is(actual, expected)
-})
-test('multiple menu items with default hotkeys', t => {
-    const actual = showMenu([{
-        key: '0',
-        command: '0'
-    },{
-        key: '1',
-        command: '1'
-    }])
-    const expected = line('0', '0') + '\n' +
-        line('1', '1')
-    t.is(actual, expected)
-})
+        command: 'pwd',
+        description: 'print working directory'
+    };
+    var actual = showMenu([cmd]);
+    var expected = line(cmd);
+    t.is(actual, expected);
+});
+test('multiple menu items with default hotkeys', function (t) {
+    var cmds = [{
+            key: '0',
+            command: '0'
+        }, {
+            key: '1',
+            command: '1'
+        }];
+    var actual = showMenu(cmds);
+    var expected = line(cmds[0]) + '\n' +
+        line(cmds[1]);
+    t.deepEqual(actual, expected);
+});

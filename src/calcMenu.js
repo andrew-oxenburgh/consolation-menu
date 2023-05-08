@@ -7,7 +7,11 @@ module.exports = function calcMenu(items) {
         return 'welcome to consolation-calcMenu';
     }
     var res = R.reduce(function (acc, item) {
-        acc.push(chalk.red("[".concat(item.key, "]")) + '   ' + item.command);
+        var line = chalk.red("[".concat(item.key, "]")) + '    ' + item.command;
+        if (item.description) {
+            line += "\n    ".concat(chalk.blue(item.description));
+        }
+        acc.push(line);
         return acc;
     }, [], items);
     return res.join('\n');
