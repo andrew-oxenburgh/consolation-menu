@@ -17,8 +17,9 @@
   },
   "scripts": {
     "test": "ava",
-    "build": "tsc --module commonjs ",
-    "build:watch": "tsc --module commonjs --watch",
+    "build:clean": "tsc --build --clean",
+    "build:dev": "tsc",
+    "build:watch": "tsc --watch",
     "clean": "rm -rf ./node_modules && yarn",
     "demo": "node ./src/index.js",
     "demo-txt": "node ./src/index.js -f ../test-files/text.txt",

@@ -6,7 +6,7 @@ const showMenu = require("../calcMenu")
 
 function line(cmd: CommandLine): string {
     if(cmd.description && cmd.description.length > 0){
-        return `\u001b[31m[${cmd.key}]\u001b[39m   ${cmd.command}\n    \u001b[34m${cmd.description}\u001b[39m`;
+        return `\u001b[31m[${cmd.key}]\u001b[39m    ${cmd.command}\n    \u001b[34m${cmd.description}\u001b[39m`;
     }else {
         return `\u001b[31m[${cmd.key}]\u001b[39m    ${cmd.command}`;
     }
