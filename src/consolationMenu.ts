@@ -1,7 +1,7 @@
 const readline = require('readline');
 
 const handleKey = require('./handleKey')
-const {calcMenu} = require('./calcMenu')
+const {showMenu} = require('./calcMenu')
 import { CommandLine } from "./types"
 
 readline.emitKeypressEvents(process.stdin);
@@ -9,7 +9,7 @@ readline.emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
 
 module.exports = function menu(items: CommandLine[]) {
-    process.stdout.write(calcMenu(items))
+    process.stdout.write(showMenu(items))
     process.stdout.write('\n')
     process.stdout.write('\n')
     // readline.cursorTo(process.stdout, 0, 0)
@@ -25,7 +25,7 @@ module.exports = function menu(items: CommandLine[]) {
                 readline.clearScreenDown(process.stdout)
                 resolve(command)
             }else{
-                process.stdout.write(calcMenu(items))
+                process.stdout.write(showMenu(items))
             }
         };
         process.stdin.addListener('keypress', handleKeyPress);
