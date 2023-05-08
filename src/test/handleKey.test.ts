@@ -1,4 +1,4 @@
-import {CommandLine} from "../commandLine";
+import {CommandLine} from "../types";
 
 const handleKey = require( "../handleKey");
 

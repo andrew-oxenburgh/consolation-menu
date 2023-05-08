@@ -1,8 +1,8 @@
-import {CommandLine} from "../commandLine";
+import {CommandLine} from "../types";
 
 const test = require('ava')
 
-const showMenu = require("../calcMenu")
+const {calcMenu} = require("../calcMenu")
 
 function line(cmd: CommandLine): string {
     if(cmd.description && cmd.description.length > 0){
@@ -13,7 +13,7 @@ function line(cmd: CommandLine): string {
 }
 
 test('first with no calcMenu', t => {
-    const actual = showMenu([])
+    const actual = calcMenu([])
     const expected = "welcome to consolation-calcMenu"
     t.is(actual, expected)
 })
@@ -22,7 +22,7 @@ test('single calcMenu item', t => {
         key: 'z',
         command: 'ls -al'
     };
-    const actual = showMenu([cmd])
+    const actual = calcMenu([cmd])
     const expected = line(cmd)
     t.is(actual, expected)
 })
@@ -32,7 +32,7 @@ test('single item with description', t => {
         command: 'pwd',
         description: 'print working directory'
     };
-    const actual = showMenu([cmd])
+    const actual = calcMenu([cmd])
     const expected = line(cmd)
     t.is(actual, expected)
 })
@@ -44,7 +44,7 @@ test('multiple menu items with default hotkeys', t => {
         key: '1',
         command: '1'
     }];
-    const actual = showMenu(cmds)
+    const actual = calcMenu(cmds)
     const expected = line(cmds[0]) + '\n' +
         line(cmds[1])
     t.deepEqual(actual, expected)

@@ -7,7 +7,7 @@ const path = require('path');
 const {program} = require("commander");
 const yaml = require('js-yaml');
 
-import { CommandLine } from "./commandLine.js"
+import { CommandLine } from "./types"
 const consolationMenu = require('./consolationMenu')
 
 function runCommand(res) {

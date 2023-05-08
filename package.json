@@ -5,7 +5,7 @@
   "main": "./src/index.ts",
   "license": "MIT",
   "homepage": "https://be-spectacular.app",
-    "type": "commonjs",
+  "type": "commonjs",
   "engines": {
     "node": "16",
     "yarn": "^1.22"
@@ -35,6 +35,16 @@
     "js-yaml": "^4.1.0",
     "keypress": "^0.2.1",
     "ramda": "^0.29.0",
+    "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
-  }
+  },
+    "ava": {
+        "extensions": {
+            "ts": "commonjs"
+        },
+        "nodeArguments": [
+            "--loader=ts-node/esm"
+        ]
+    }
+
 }

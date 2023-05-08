@@ -1,8 +1,8 @@
 const readline = require('readline');
 
 const handleKey = require('./handleKey')
-const calcMenu = require('./calcMenu')
-import { CommandLine } from "./commandLine.js"
+const {calcMenu} = require('./calcMenu')
+import { CommandLine } from "./types"
 
 readline.emitKeypressEvents(process.stdin);
 

@@ -3,3 +3,8 @@ export interface CommandLine {
     key: string,
     description?: string
 }
+
+export interface MenuOptions {
+    usage?: string
+}
+
