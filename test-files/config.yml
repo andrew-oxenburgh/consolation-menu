@@ -1,4 +1,2 @@
----
-commands:
-    - command: huey
-      key: z
+- command: huey
+  key: z

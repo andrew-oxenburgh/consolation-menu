@@ -8,8 +8,7 @@ readline.emitKeypressEvents(process.stdin);
 
 process.stdin.setRawMode(true);
 
-module.exports = function menu(_items: []) {
-    const items = manipulateInput(_items)
+module.exports = function menu(items: CommandLine[]) {
     process.stdout.write(showMenu(items))
     process.stdout.write('\n')
     process.stdout.write('\n')
@@ -21,8 +20,8 @@ module.exports = function menu(_items: []) {
                 process.stdin.setRawMode(false);
                 process.exit()
             }
-            let command = handleKey({name: chunk || key.name}, items);
-            if(command !== -1){
+            let command = handleKey(chunk, items);
+            if(command !== ''){
                 readline.clearScreenDown(process.stdout)
                 resolve(command)
             }else{

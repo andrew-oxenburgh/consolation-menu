@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -92,6 +81,28 @@ function removeEmptyLines(input) {
         return acc;
     }, []);
 }
+function extractYaml(input) {
+    return R.map(function (val) {
+        return {
+            command: val.command,
+            key: val.key,
+            description: val.description,
+        };
+    }, input);
+}
+function extractText(input) {
+    var finalInput = [];
+    R.forEach(function (val) {
+        if (val.length > 0) {
+            finalInput.push({
+                command: val,
+                key: finalInput.length + '',
+                description: ''
+            });
+        }
+    }, input);
+    return finalInput;
+}
 function getConfig(opts) {
     return __awaiter(this, void 0, void 0, function () {
         var filepath, finalInput, input;
@@ -105,21 +116,12 @@ function getConfig(opts) {
                 case 1:
                     input = _a.sent();
                     input = input.toString().split('\n');
-                    input = removeEmptyLines(input);
-                    finalInput = R.map(function (val) {
-                        return {
-                            command: val,
-                            key: -1,
-                            description: ''
-                        };
-                    }, input);
+                    finalInput = extractText(input);
                     return [3 /*break*/, 3];
                 case 2:
                     if (opts.file.endsWith('.yml') || opts.file.endsWith('.yaml')) {
                         finalInput = yaml.load(fs.readFileSync(filepath, 'utf8'));
-                        finalInput = R.map(function (val) {
-                            return __assign({ command: '', key: '', description: '' }, val);
-                        }, finalInput);
+                        finalInput = extractYaml(finalInput);
                     }
                     _a.label = 3;
                 case 3: return [2 /*return*/, finalInput];

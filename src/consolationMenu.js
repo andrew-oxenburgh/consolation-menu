@@ -6,8 +6,7 @@ var handleKey = require('./handleKey');
 var showMenu = require('./calcMenu');
 readline.emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
-module.exports = function menu(_items) {
-    var items = manipulateInput(_items);
+module.exports = function menu(items) {
     process.stdout.write(showMenu(items));
     process.stdout.write('\n');
     process.stdout.write('\n');
@@ -19,8 +18,8 @@ module.exports = function menu(_items) {
                 process.stdin.setRawMode(false);
                 process.exit();
             }
-            var command = handleKey({ name: chunk || key.name }, items);
-            if (command !== -1) {
+            var command = handleKey(chunk, items);
+            if (command !== '') {
                 readline.clearScreenDown(process.stdout);
                 resolve(command);
             }

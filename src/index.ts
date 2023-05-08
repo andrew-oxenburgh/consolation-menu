@@ -39,32 +39,43 @@ function removeEmptyLines(input: string[]): string[] {
     }, []);
 }
 
+function extractYaml(input: CommandLine[]) {
+    return R.map((val) => {
+        return {
+            command: val.command,
+            key: val.key,
+            description: val.description,
+        }
+    }, input)
+}
+
+function extractText(input: string[]): CommandLine[] {
+    const finalInput: CommandLine[] = []
+    R.forEach((val: string) => {
+        if (val.length > 0) {
+            finalInput.push({
+                command: val,
+                key: finalInput.length + '',
+                description: ''
+            })
+
+        }
+    }, input)
+    return finalInput
+}
+
 async function getConfig(opts: {file: string}): Promise<CommandLine[]> {
     const filepath = path.resolve(__dirname, opts.file);
-    let finalInput: [] = []
+    let finalInput: CommandLine[] = []
 
     if(opts.file.endsWith('.txt')){
         let input: string[] = await fs.promises.readFile(filepath)
         input = input.toString().split('\n')
-        input = removeEmptyLines(input)
-        finalInput = R.map((val)=>{
-            return {
-                command: val,
-                key: -1,
-                description: ''
-            }
-        }, input)
+        finalInput = extractText(input);
     }
     else if(opts.file.endsWith('.yml')||opts.file.endsWith('.yaml')){
         finalInput = yaml.load(fs.readFileSync(filepath, 'utf8'));
-        finalInput = R.map((val)=>{
-            return {
-                command: '',
-                key: '',
-                description: '',
-                ...val
-            }
-        }, finalInput)
+        finalInput = extractYaml(finalInput);
     }
     return finalInput
 }

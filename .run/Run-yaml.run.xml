@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run-yaml" type="NodeJSConfigurationType" application-parameters="-f ../test-files/config.yml" path-to-js-file="./src/index.js" working-dir="$PROJECT_DIR$">
+    <method v="2" />
+  </configuration>
+</component>
