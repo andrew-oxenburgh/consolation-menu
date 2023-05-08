@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var readline = require('readline');
-var manipulateInput = require('./manipulateInput');
 var handleKey = require('./handleKey');
 var showMenu = require('./calcMenu');
 readline.emitKeypressEvents(process.stdin);

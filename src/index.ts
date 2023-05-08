@@ -1,13 +1,15 @@
-import { CommandLine } from "./commandLine.js"
+import * as R from "ramda";
 
-const consolationMenu = require('./consolationMenu')
 const exec = require('child_process').exec
 const chalk = require('chalk')
 const fs = require('fs')
 const path = require('path');
 const {program} = require("commander");
 const yaml = require('js-yaml');
-const R = require("ramda");
+
+import { CommandLine } from "./commandLine.js"
+const consolationMenu = require('./consolationMenu')
+
 function runCommand(res) {
     console.log()
     console.log(chalk.grey(res))

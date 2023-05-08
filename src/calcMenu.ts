@@ -1,7 +1,8 @@
-import {CommandLine} from "./commandLine";
 import * as R from 'ramda'
-
 const chalk = require("chalk");
+
+import {CommandLine} from "./commandLine";
+
 module.exports = function calcMenu(items: CommandLine[]) {
     if(!items || items.length === 0){
         return 'welcome to consolation-calcMenu'

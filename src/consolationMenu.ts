@@ -1,5 +1,5 @@
-var readline = require('readline');
-const manipulateInput = require('./manipulateInput')
+const readline = require('readline');
+
 const handleKey = require('./handleKey')
 const showMenu = require('./calcMenu')
 import { CommandLine } from "./commandLine.js"

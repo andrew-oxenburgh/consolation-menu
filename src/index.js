@@ -36,14 +36,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var consolationMenu = require('./consolationMenu');
+var R = require("ramda");
 var exec = require('child_process').exec;
 var chalk = require('chalk');
 var fs = require('fs');
 var path = require('path');
 var program = require("commander").program;
 var yaml = require('js-yaml');
-var R = require("ramda");
+var consolationMenu = require('./consolationMenu');
 function runCommand(res) {
     console.log();
     console.log(chalk.grey(res));
