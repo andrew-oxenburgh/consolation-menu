@@ -38,13 +38,12 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },
-    "ava": {
-        "extensions": {
-            "ts": "commonjs"
-        },
-        "nodeArguments": [
-            "--loader=ts-node/esm"
-        ]
-    }
-
+  "ava": {
+    "extensions": {
+      "ts": "commonjs"
+    },
+    "nodeArguments": [
+      "--loader=ts-node/esm"
+    ]
+  }
 }

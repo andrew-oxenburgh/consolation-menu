@@ -5,6 +5,8 @@ export interface CommandLine {
 }
 
 export interface MenuOptions {
-    usage?: string
+    usage?: string,
+    header?: string,
+    footer?: string,
 }
 

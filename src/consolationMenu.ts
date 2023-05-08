@@ -5,7 +5,6 @@ const {showMenu} = require('./calcMenu')
 import { CommandLine } from "./types"
 
 readline.emitKeypressEvents(process.stdin);
-
 process.stdin.setRawMode(true);
 
 module.exports = function menu(items: CommandLine[]) {
@@ -20,7 +19,10 @@ module.exports = function menu(items: CommandLine[]) {
                 process.stdin.setRawMode(false);
                 process.exit()
             }
-            let command = handleKey(chunk, items);
+            let command = ''
+            if(chunk){
+                command = handleKey(chunk, items);
+            }
             if(command !== ''){
                 readline.clearScreenDown(process.stdout)
                 resolve(command)
