@@ -40,10 +40,11 @@ function removeEmptyLines(input: string[]): string[] {
 }
 
 function extractYaml(input: CommandLine[]) {
+    let defKey = 0
     return R.map((val) => {
         return {
             command: val.command,
-            key: val.key,
+            key: val.key || (defKey ++ + ''),
             description: val.description,
         }
     }, input)

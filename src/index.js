@@ -82,10 +82,11 @@ function removeEmptyLines(input) {
     }, []);
 }
 function extractYaml(input) {
+    var defKey = 0;
     return R.map(function (val) {
         return {
             command: val.command,
-            key: val.key,
+            key: val.key || (defKey++ + ''),
             description: val.description,
         };
     }, input);

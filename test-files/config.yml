@@ -1,3 +1,10 @@
 - command: huey
   key: z
   description: 'a rich ducks nephew'
+
+- command: dewey
+  key: x
+  description: 'another rich ducks nephew'
+
+- command: louie
+
