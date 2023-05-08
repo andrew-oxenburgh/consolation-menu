@@ -20,6 +20,7 @@
     "build": "tsc --module commonjs ",
     "build:watch": "tsc --module commonjs --watch",
     "clean": "rm -rf ./node_modules && yarn",
+    "demo": "node ./src/index.js",
     "demo-txt": "node ./src/index.js -f ../test-files/text.txt",
     "demo-yml": "node ./src/index.js -f ../test-files/config.yml"
   },

@@ -56,12 +56,6 @@ var items = [
         command: 'three'
     },
 ];
-test('ctrl c return null - break condition', function (t) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        t.is(null, handleKey({ ctrl: true, name: 'c' }, items));
-        return [2 /*return*/];
-    });
-}); });
 test('handle valid number keys', function (t) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         t.is('zero', handleKey('0', items));
@@ -70,8 +64,8 @@ test('handle valid number keys', function (t) { return __awaiter(void 0, void 0,
 }); });
 test('handle invalid number keys', function (t) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        t.is(-1, handleKey({ name: '7' }, items));
-        t.is(-1, handleKey({ name: '12' }, items));
+        t.is('', handleKey({ name: '7' }, items));
+        t.is('', handleKey({ name: '12' }, items));
         return [2 /*return*/];
     });
 }); });

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var R = require("ramda");
 var chalk = require("chalk");
 module.exports = function calcMenu(items) {
-    if (!items) {
+    if (!items || items.length === 0) {
         return 'welcome to consolation-calcMenu';
     }
     var res = R.reduce(function (acc, item) {
