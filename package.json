@@ -17,6 +17,7 @@
     "url": "https://be-spectacular.app"
   },
   "scripts": {
+    "lint": "eslint --fix .",
     "test": "ava",
     "build:clean": "tsc --build --clean",
     "build:dev": "tsc",

@@ -1,5 +1,4 @@
 env:
-  browser: true
   commonjs: true
   es2021: true
 parser: "@typescript-eslint/parser"
@@ -9,7 +8,8 @@ parserOptions:
   ecmaVersion: latest
   project: tsconfig.json
 rules:
-  indent: [warn, 2]
+#  indent: [error, 4]
+  "@typescript-eslint/indent": [error, 3]
   "@typescript-eslint/restrict-plus-operands": off
   "@typescript-eslint/prefer-nullish-coalescing": off
   "@typescript-eslint/no-var-requires": off
