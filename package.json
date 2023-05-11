@@ -1,8 +1,9 @@
 {
   "name": "consolation-menu",
+  "description": "Create a menu of commands from a file.",
   "packageManager": "yarn@3.5.0",
   "version": "1.0.0",
-  "main": "./src/index.ts",
+  "main": "./dist/index.js",
   "license": "MIT",
   "homepage": "https://be-spectacular.app",
   "type": "commonjs",
@@ -21,9 +22,10 @@
     "build:dev": "tsc",
     "build:watch": "tsc --watch",
     "clean": "rm -rf ./node_modules && yarn",
-    "demo": "node ./src/index.js",
-    "demo-txt": "node ./src/index.js -f ../test-files/text.txt",
-    "demo-yml": "node ./src/index.js -f ../test-files/config.yml"
+    "demo": "node ./dist/index.js",
+    "demo-txt": "node ./dist/index.js -f ./test-files/text.txt",
+    "demo-yml": "node ./dist/index.js -f ./test-files/config.yml",
+    "postinstall": "yarn build:dev"
   },
   "devDependencies": {
     "ava": "^5.2.0"

@@ -32,15 +32,6 @@ async function show(menu) {
     }
 }
 
-function removeEmptyLines(input: string[]): string[] {
-    return input.reduce((acc, val) => {
-        if (val.length) {
-            acc.push(val)
-        }
-        return acc
-    }, []);
-}
-
 function extractYaml(input: CommandLine[]) {
     let defKey = 0
     return R.map((val) => {
@@ -68,7 +59,7 @@ function extractText(input: string[]): CommandLine[] {
 }
 
 async function getConfig(opts: {file: string}): Promise<CommandLine[]> {
-    const filepath = path.resolve(__dirname, opts.file);
+    const filepath = path.resolve(process.cwd(), opts.file);
     let finalInput: CommandLine[] = []
 
     if(opts.file.endsWith('.txt')){
