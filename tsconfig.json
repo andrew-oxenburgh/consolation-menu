@@ -1,4 +1,6 @@
 {
+    "include": ["src"],
+    "exclude": ["dist", "node_modules"],
     "compilerOptions": {
         "outDir": "dist",
         "target": "ESNext",
@@ -7,6 +9,7 @@
         "emitDeclarationOnly": false,
         // Ensure that Babel can safely transpile files in the TypeScript project
         "isolatedModules": true,
-        "module": "CommonJS"
+        "module": "CommonJS",
+
     }
 }

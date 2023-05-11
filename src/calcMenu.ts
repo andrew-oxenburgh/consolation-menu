@@ -1,27 +1,27 @@
 import * as R from 'ramda'
-import {CommandLine} from "./types";
-import {decorateMenu} from "./decorateMenu";
+import { type CommandLine } from './types'
+import { decorateMenu } from './decorateMenu'
 
-const chalk = require("chalk");
+const chalk = require('chalk')
 
 module.exports = {
-    calcMenu,
-    showMenu
+  calcMenu,
+  showMenu
 }
 
-function calcMenu(items: CommandLine[]): string[] {
-    if (!items || items.length === 0) {
-        return ['welcome to consolation-calcMenu']
+function calcMenu (items: CommandLine[]): string[] {
+  if (!items || items.length === 0) {
+    return ['welcome to consolation-calcMenu']
+  }
+  return R.reduce((acc: string[], item: CommandLine) => {
+    acc.push(chalk.red(`[${item.key}]`) + '    ' + item.command)
+    if (item.description) {
+      acc.push(`    ${chalk.blue(item.description)}`)
     }
-    return R.reduce((acc: string[], item: CommandLine) => {
-        acc.push(chalk.red(`[${item.key}]`) + '    ' + item.command)
-        if (item.description) {
-            acc.push(`    ${chalk.blue(item.description)}`)
-        }
-        return acc
-    }, [], items)
+    return acc
+  }, [], items)
 }
 
-function showMenu(items: CommandLine[]) {
-    return decorateMenu(calcMenu(items)).join('\n')
+function showMenu (items: CommandLine[]) {
+  return decorateMenu(calcMenu(items)).join('\n')
 }

@@ -1,12 +1,11 @@
 export interface CommandLine {
-    command: string,
-    key: string,
-    description?: string
+  command: string
+  key: string
+  description?: string
 }
 
 export interface MenuOptions {
-    usage?: string,
-    header?: string,
-    footer?: string,
+  usage?: string
+  header?: string
+  footer?: string
 }
-
