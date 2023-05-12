@@ -1,15 +1,14 @@
 {
   "name": "consolation-menu",
   "description": "Create a menu of commands from a file.",
-  "packageManager": "yarn@3.5.1",
   "version": "1.0.0",
   "main": "./dist/index.js",
   "license": "MIT",
   "homepage": "https://be-spectacular.app",
   "type": "commonjs",
   "engines": {
-    "node": "16",
-    "yarn": "^1.22"
+    "node": "~16.20",
+    "yarn": "~3.5"
   },
   "author": {
     "name": "Andrew Oxenburgh",
