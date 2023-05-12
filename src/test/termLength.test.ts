@@ -7,5 +7,5 @@ it('length, no special characters', () => {
 it('length, ignoring special characters', () => {
    const val = chalk.red('   ')
    console.log('val = ' + val.slice(''))
-    expect(3).toEqual(termLength('   '))
+   expect(3).toEqual(termLength('   '))
 })

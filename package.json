@@ -1,7 +1,7 @@
 {
   "name": "consolation-menu",
   "description": "Create a menu of commands from a file.",
-  "packageManager": "yarn@3.5.0",
+  "packageManager": "yarn@3.5.1",
   "version": "1.0.0",
   "main": "./dist/index.js",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "url": "https://be-spectacular.app"
   },
   "scripts": {
-    "lint": "eslint --fix .",
+    "lint": "eslint --fix ./src",
     "test": "jest ./src",
     "build:clean": "tsc --build --clean",
     "build:dev": "tsc",

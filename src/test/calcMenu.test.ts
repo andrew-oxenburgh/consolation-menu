@@ -26,7 +26,7 @@ it('single calcMenu item', () => {
    }
    const actual = calcMenu([cmd])
    const expected = line(cmd)
-    expect(actual).toEqual(expected)
+   expect(actual).toEqual(expected)
 })
 it('single item with description', () => {
    const cmd = {
@@ -36,7 +36,7 @@ it('single item with description', () => {
    }
    const actual = calcMenu([cmd])
    const expected = line(cmd)
-    expect(actual).toEqual(expected)
+   expect(actual).toEqual(expected)
 })
 it('multiple menu items with default hotkeys', () => {
    const cmds: CommandLine[] = [{
@@ -48,5 +48,5 @@ it('multiple menu items with default hotkeys', () => {
    }]
    const actual = calcMenu(cmds)
    const expected = [].concat(line(cmds[0]), line(cmds[1]))
-    expect(actual).toEqual(expected)
+   expect(actual).toEqual(expected)
 })
