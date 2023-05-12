@@ -18,7 +18,7 @@
   },
   "scripts": {
     "lint": "eslint --fix .",
-    "test": "ava",
+    "test": "jest ./src",
     "build:clean": "tsc --build --clean",
     "build:dev": "tsc",
     "build:watch": "tsc --watch",
@@ -29,13 +29,15 @@
     "postinstall": "yarn build:dev"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.1",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
-    "ava": "^5.2.0",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "latest",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
     "typescript": "*"
   },
   "dependencies": {
@@ -47,13 +49,5 @@
     "keypress": "^0.2.1",
     "ramda": "^0.29.0",
     "ts-node": "^10.9.1"
-  },
-  "ava": {
-    "extensions": {
-      "ts": "commonjs"
-    },
-    "nodeArguments": [
-      "--loader=ts-node/esm"
-    ]
   }
 }

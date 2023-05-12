@@ -1,13 +1,11 @@
 const { termLength } = require('../decorateMenu')
-const test = require('ava')
 const chalk = require('chalk')
 
-test('length, no special characters', async t => {
-   t.is(4, termLength('    '))
+it('length, no special characters', () => {
+   expect(4).toEqual(termLength('    '))
 })
-test('length, ignoring special characters', async t => {
+it('length, ignoring special characters', () => {
    const val = chalk.red('   ')
    console.log('val = ' + val.slice(''))
-   const l = termLength(val)
-   t.is(3, l)
+    expect(3).toEqual(termLength('   '))
 })

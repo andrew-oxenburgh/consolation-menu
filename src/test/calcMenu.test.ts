@@ -1,7 +1,4 @@
 import { type CommandLine } from '../types'
-
-const test = require('ava')
-
 const { calcMenu } = require('../calcMenu')
 
 function line (cmd: CommandLine): string[] {
@@ -17,21 +14,21 @@ function line (cmd: CommandLine): string[] {
    }
 }
 
-test('first with no calcMenu', t => {
+it('first with no calcMenu', () => {
    const actual = calcMenu([])
    const expected = ['welcome to consolation-calcMenu']
-   t.deepEqual(actual, expected)
+   expect(actual).toEqual(expected)
 })
-test('single calcMenu item', t => {
+it('single calcMenu item', () => {
    const cmd = {
       key: 'z',
       command: 'ls -al'
    }
    const actual = calcMenu([cmd])
    const expected = line(cmd)
-   t.deepEqual(actual, expected)
+    expect(actual).toEqual(expected)
 })
-test('single item with description', t => {
+it('single item with description', () => {
    const cmd = {
       key: '0',
       command: 'pwd',
@@ -39,9 +36,9 @@ test('single item with description', t => {
    }
    const actual = calcMenu([cmd])
    const expected = line(cmd)
-   t.deepEqual(actual, expected)
+    expect(actual).toEqual(expected)
 })
-test('multiple menu items with default hotkeys', t => {
+it('multiple menu items with default hotkeys', () => {
    const cmds: CommandLine[] = [{
       key: '0',
       command: '0'
@@ -51,5 +48,5 @@ test('multiple menu items with default hotkeys', t => {
    }]
    const actual = calcMenu(cmds)
    const expected = [].concat(line(cmds[0]), line(cmds[1]))
-   t.deepEqual(actual, expected)
+    expect(actual).toEqual(expected)
 })

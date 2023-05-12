@@ -2,8 +2,6 @@ import { type CommandLine } from '../types'
 
 const handleKey = require('../handleKey')
 
-const test = require('ava')
-
 const items: CommandLine[] = [
    {
       key: '0',
@@ -20,14 +18,20 @@ const items: CommandLine[] = [
    {
       key: '3',
       command: 'three'
+   },
+   {
+      key: 'g',
+      command: 'GO'
    }
 ]
-test('handle valid number keys', async t => {
-   t.is('zero', handleKey('0', items))
+it('handle valid number keys', () => {
+   expect('zero').toEqual(handleKey('0', items))
+   expect('one').toEqual(handleKey('1', items))
+   expect('GO').toEqual(handleKey('g', items))
    // t.is('one', handleKey('1', items))
    // t.is('GO', handleKey('g', items))
 })
-test('handle invalid number keys', async t => {
-   t.is('', handleKey({ name: '7' }, items))
-   t.is('', handleKey({ name: '12' }, items))
+it('handle invalid number keys', () => {
+   expect('').toEqual(handleKey({ name: '7' }, items))
+   expect('').toEqual(handleKey({ name: '12' }, items))
 })

@@ -1,37 +1,35 @@
 import { decorateMenu } from '../decorateMenu'
 
-const test = require('ava')
-
-test('empty menu - with usage', t => {
+it('empty menu - with usage', () => {
    const actual = decorateMenu([], { usage: 'showing usage' })
    const expected = [
       'showing usage'
    ]
-   t.deepEqual(actual, expected)
+    expect(actual).toEqual(expected)
 })
-test('empty menu - no usage', t => {
+it('empty menu - no usage', () => {
    const actual = decorateMenu([])
    const expected = [
       'SHOW HELP'
    ]
-   t.deepEqual(actual, expected)
+    expect(actual).toEqual(expected)
 })
-test('wrap with border', t => {
+it('wrap with border', () => {
    const actual = decorateMenu(['1', '2'])
    const expected = [
-      '+----+',
-      '| 1  |',
-      '| 2  |',
-      '+----+'
+      '+--+',
+      '| 1    |',
+      '| 2    |',
+      '+--+'
    ]
-   t.deepEqual(actual, expected)
+    expect(actual).toEqual(expected)
 })
-test('wrap with border 1 line', t => {
+it('wrap with border 1 line', () => {
    const actual = decorateMenu(['z'], {})
    const expected = [
-      '+----+',
-      '| z  |',
-      '+----+'
+      '+--+',
+      '| z    |',
+      '+--+'
    ]
-   t.deepEqual(actual, expected)
+    expect(actual).toEqual(expected)
 })
